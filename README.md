@@ -65,7 +65,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Here are some screenshots showcasing the dashboard:
 
-![Dashboard Screenshot](path/to/your/screenshot.png)
+![Dashboard Screenshot](https://i.imgur.com/YVKYbnK.png)
 
 Feel free to reach out if you have any questions or need further assistance!
 
