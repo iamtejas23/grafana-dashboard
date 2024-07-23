@@ -2,6 +2,7 @@
 # Futuristic Sci-Fi Dashboard by Tejas
 
 <!-- Add a screenshot of your dashboard -->
+https://imgur.com/a/wSPwAqD
 
 ## 🚀 Overview
 
