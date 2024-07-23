@@ -1,39 +1,110 @@
 {
+    "__inputs": [
+      {
+        "name": "DS_PROMETHEUS",
+        "label": "Prometheus",
+        "description": "",
+        "type": "datasource",
+        "pluginId": "prometheus",
+        "pluginName": "Prometheus"
+      }
+    ],
+    "__requires": [
+      {
+        "type": "panel",
+        "id": "bargauge",
+        "name": "Bar gauge",
+        "version": ""
+      },
+      {
+        "type": "panel",
+        "id": "gauge",
+        "name": "Gauge",
+        "version": ""
+      },
+      {
+        "type": "grafana",
+        "id": "grafana",
+        "name": "Grafana",
+        "version": "7.3.1"
+      },
+      {
+        "type": "panel",
+        "id": "graph",
+        "name": "Graph",
+        "version": ""
+      },
+      {
+        "type": "datasource",
+        "id": "prometheus",
+        "name": "Prometheus",
+        "version": "1.0.0"
+      },
+      {
+        "type": "panel",
+        "id": "stat",
+        "name": "Stat",
+        "version": ""
+      }
+    ],
     "annotations": {
-      "list": []
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
     },
+    "description": "Advanced futuristic sci-fi UI for monitoring Linux host (VM, Server, OS).",
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
     "id": null,
-    "links": [],
+    "iteration": 1633868706184,
+    "links": [
+      {
+        "icon": "question",
+        "tags": [],
+        "targetBlank": true,
+        "title": "GitHub",
+        "tooltip": "Open GitHub",
+        "type": "link",
+        "url": "https://github.com/3xploitGuy/linuxstats"
+      }
+    ],
     "panels": [
       {
-        "datasource": "Prometheus",
+        "datasource": "${DS_PROMETHEUS}",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
             },
+            "custom": {},
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "red",
                   "value": null
                 },
                 {
-                  "color": "green",
-                  "value": 30
-                },
-                {
-                  "color": "orange",
-                  "value": 70
-                },
-                {
                   "color": "red",
-                  "value": 90
+                  "value": 10
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 20
+                },
+                {
+                  "color": "blue",
+                  "value": 30
                 }
               ]
             },
@@ -42,79 +113,87 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
+          "h": 6,
+          "w": 8,
           "x": 0,
           "y": 0
         },
         "id": 1,
         "options": {
+          "displayMode": "lcd",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "mean"
             ],
             "fields": "",
             "values": false
           },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          "showUnfilled": true
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{job='node-exporter',mode='idle'}[5m])) * 100)",
+            "expr": "node_power_supply_capacity{instance=~\"$node\"}",
+            "instant": true,
             "interval": "",
-            "legendFormat": "CPU Usage",
+            "legendFormat": "Battery percentage",
             "refId": "A"
           }
         ],
-        "title": "CPU Usage",
-        "type": "gauge"
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Battery",
+        "type": "bargauge"
       },
       {
-        "datasource": "Prometheus",
+        "cacheTimeout": null,
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "Busy state of all CPU cores together",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
             },
+            "custom": {},
             "mappings": [],
+            "max": 100,
+            "min": 0,
+            "nullValueMode": "null",
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "rgba(50, 172, 45, 0.97)",
                   "value": null
                 },
                 {
-                  "color": "green",
-                  "value": 50
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 85
                 },
                 {
-                  "color": "orange",
-                  "value": 75
-                },
-                {
-                  "color": "red",
-                  "value": 90
+                  "color": "rgba(245, 54, 54, 0.9)",
+                  "value": 95
                 }
               ]
             },
-            "unit": "bytes"
+            "unit": "percent"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 6,
+          "h": 8,
+          "w": 5,
+          "x": 8,
           "y": 0
         },
         "id": 2,
+        "links": [],
         "options": {
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
@@ -122,43 +201,48 @@
           "showThresholdLabels": false,
           "showThresholdMarkers": true
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "node_memory_MemAvailable_bytes",
-            "interval": "",
-            "legendFormat": "Memory Available",
-            "refId": "A"
+            "expr": "(((count(count(node_cpu_seconds_total{instance=\"$node\",job=\"$job\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=\"$node\",job=\"$job\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=\"$node\",job=\"$job\"}) by (cpu))",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 900
           }
         ],
-        "title": "Memory Available",
+        "title": "CPU Busy",
         "type": "gauge"
       },
       {
-        "datasource": "Prometheus",
+        "cacheTimeout": null,
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
             },
+            "custom": {},
+            "decimals": 0,
             "mappings": [],
+            "max": 100,
+            "min": 0,
+            "nullValueMode": "null",
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "rgba(50, 172, 45, 0.97)",
                   "value": null
                 },
                 {
-                  "color": "green",
-                  "value": 30
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 80
                 },
                 {
-                  "color": "orange",
-                  "value": 70
-                },
-                {
-                  "color": "red",
+                  "color": "rgba(245, 54, 54, 0.9)",
                   "value": 90
                 }
               ]
@@ -168,16 +252,19 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 12,
+          "h": 6,
+          "w": 7,
+          "x": 13,
           "y": 0
         },
+        "hideTimeOverride": false,
         "id": 3,
+        "links": [],
         "options": {
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
@@ -185,107 +272,105 @@
           "showThresholdLabels": false,
           "showThresholdMarkers": true
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{fstype!=\"tmpfs\",mountpoint!=\"/boot\"}",
-            "interval": "",
-            "legendFormat": "Disk Space Available",
-            "refId": "A"
+            "expr": "100 - ((node_memory_MemAvailable_bytes{instance=\"$node\",job=\"$job\"} * 100) / node_memory_MemTotal_bytes{instance=\"$node\",job=\"$job\"})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "refId": "B",
+            "step": 900
           }
         ],
-        "title": "Disk Space Available",
+        "title": "RAM Used",
         "type": "gauge"
       },
       {
-        "datasource": "Prometheus",
+        "cacheTimeout": null,
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "",
         "fieldConfig": {
           "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
+            "custom": {},
+            "decimals": 1,
             "mappings": [],
+            "nullValueMode": "null",
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "rgba(50, 172, 45, 0.97)",
                   "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 1
-                },
-                {
-                  "color": "orange",
-                  "value": 10
-                },
-                {
-                  "color": "red",
-                  "value": 20
                 }
               ]
             },
-            "unit": "percent"
+            "unit": "s"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 18,
+          "h": 2,
+          "w": 4,
+          "x": 20,
           "y": 0
         },
         "id": 4,
+        "links": [],
         "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          }
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "sum(rate(node_network_receive_bytes_total{device!=\"lo\"}[5m]))",
-            "interval": "",
-            "legendFormat": "Network Receive",
-            "refId": "A"
+            "expr": "node_time_seconds{instance=\"$node\",job=\"$job\"} - node_boot_time_seconds{instance=\"$node\",job=\"$job\"}",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A",
+            "step": 86400
           }
         ],
-        "title": "Network Receive",
-        "type": "gauge"
+        "title": "Uptime",
+        "type": "stat"
       },
       {
-        "datasource": "Prometheus",
+        "cacheTimeout": null,
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
             },
+            "custom": {},
+            "decimals": 0,
             "mappings": [],
+            "nullValueMode": "null",
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "rgba(50, 172, 45, 0.97)",
                   "value": null
                 },
                 {
-                  "color": "green",
-                  "value": 1
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 80
                 },
                 {
-                  "color": "orange",
-                  "value": 10
-                },
-                {
-                  "color": "red",
-                  "value": 20
+                  "color": "rgba(245, 54, 54, 0.9)",
+                  "value": 90
                 }
               ]
             },
@@ -294,16 +379,19 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
+          "h": 6,
+          "w": 8,
           "x": 0,
-          "y": 9
+          "y": 6
         },
+        "hideTimeOverride": false,
         "id": 5,
+        "links": [],
         "options": {
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
@@ -311,156 +399,148 @@
           "showThresholdLabels": false,
           "showThresholdMarkers": true
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "sum(rate(node_network_transmit_bytes_total{device!=\"lo\"}[5m]))",
-            "interval": "",
-            "legendFormat": "Network Transmit",
-            "refId": "A"
+            "expr": "node_filesystem_avail_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\"} * 100 / node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\"}",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "Available space on root",
+            "refId": "A",
+            "step": 900
           }
         ],
-        "title": "Network Transmit",
+        "title": "Disk Space",
         "type": "gauge"
       },
       {
-        "datasource": "Prometheus",
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "The average number of processes waiting to be scheduled",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
             },
+            "custom": {},
+            "decimals": 2,
             "mappings": [],
+            "nullValueMode": "null",
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "blue",
+                  "color": "rgba(50, 172, 45, 0.97)",
                   "value": null
                 },
                 {
-                  "color": "green",
-                  "value": 50
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 2
                 },
                 {
-                  "color": "orange",
-                  "value": 75
-                },
-                {
-                  "color": "red",
-                  "value": 90
+                  "color": "rgba(245, 54, 54, 0.9)",
+                  "value": 5
                 }
               ]
             },
-            "unit": "celsius"
+            "unit": "short"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 6,
-          "y": 9
+          "h": 6,
+          "w": 8,
+          "x": 8,
+          "y": 6
         },
         "id": 6,
+        "links": [],
         "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
           "reduceOptions": {
             "calcs": [
-              "last"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          }
         },
-        "pluginVersion": "7.5.5",
+        "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "node_hwmon_temp_celsius",
-            "interval": "",
-            "legendFormat": "Hardware Temperature",
+            "expr": "node_load1{instance=\"$node\",job=\"$job\"}",
+            "intervalFactor": 1,
             "refId": "A"
           }
         ],
-        "title": "Hardware Temperature",
-        "type": "gauge"
-      },
-      {
-        "datasource": "Prometheus",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "blue",
-                  "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 30
-                },
-                {
-                  "color": "orange",
-                  "value": 70
-                },
-                {
-                  "color": "red",
-                  "value": 90
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 12,
-          "y": 9
-        },
-        "id": 7,
-        "options": {
-          "reduceOptions": {
-            "calcs": [
-              "last"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true
-        },
-        "pluginVersion": "7.5.5",
-        "targets": [
-          {
-            "expr": "rate(node_disk_io_time_seconds_total{job='node-exporter'}[5m])",
-            "interval": "",
-            "legendFormat": "Disk I/O Time",
-            "refId": "A"
-          }
-        ],
-        "title": "Disk I/O Time",
-        "type": "gauge"
+        "title": "Load Average",
+        "type": "stat"
       }
     ],
-    "schemaVersion": 27,
+    "refresh": "5s",
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
-      "node-exporter",
-      "prometheus"
+      "templated",
+      "linux",
+      "node-exporter"
     ],
     "templating": {
-      "list": []
+      "list": [
+        {
+          "allValue": null,
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Node",
+          "multi": false,
+          "name": "node",
+          "options": [],
+          "query": {
+            "query": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+            "refId": "standard"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(node_uname_info, job)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Job",
+          "multi": false,
+          "name": "job",
+          "options": [],
+          "query": {
+            "query": "label_values(node_uname_info, job)",
+            "refId": "standard"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-6h",
       "to": "now"
     },
     "timepicker": {
@@ -489,7 +569,8 @@
       ]
     },
     "timezone": "browser",
-    "title": "Futuristic Sci-Fi Linux Node Exporter Dashboard",
-    "version": 1
+    "title": "Futuristic Dashboard By Tejas Mane",
+    "uid": null,
+    "version": 0
   }
   
