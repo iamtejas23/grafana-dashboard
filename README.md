@@ -1,5 +1,5 @@
 ![Build Status](https://img.shields.io/github/workflow/status/username/repo/CI)
-# Futuristic Sci-Fi Dashboard by Tejas
+# Futuristic Dashboard by Tejas
 
 <!-- Add a screenshot of your dashboard -->
 ![Dashboard Screenshot](https://i.imgur.com/WpdOJGx.png) <!-- Add a screenshot of your dashboard -->
