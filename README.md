@@ -1,7 +1,7 @@
 ![Build Status](https://img.shields.io/github/workflow/status/username/repo/CI)
 # Futuristic Sci-Fi Dashboard by Tejas
 
-![Dashboard Screenshot](https://www.awesomescreenshot.com/image/49591810?key=6ec28a6dd5511c4006c3b7722502e089) <!-- Add a screenshot of your dashboard -->
+![Dashboard Screenshot](https://photos.google.com/share/AF1QipP0LmjmilEgZzLb13Jbp7iMSXT9EFcEhc_fxk-rCW1cbiRsckWdp-IxhG8jT3NU_A/photo/AF1QipPzDiVkvc3XBlfT8yfDmaA5GQSRQdGa9AP4Sa4n?key=bkZRa0tJT2E4NUItN3NWd1lRTlBWVk4tY0hoSXF3.png) <!-- Add a screenshot of your dashboard -->
 
 ## 🚀 Overview
 
