@@ -54,15 +54,15 @@
           "datasource": "-- Grafana --",
           "enable": true,
           "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
+          "iconColor": "rgba(0, 255, 255, 1)",
           "name": "Annotations & Alerts",
           "type": "dashboard"
         }
       ]
     },
-    "description": "Advanced futuristic sci-fi UI for monitoring Linux host (VM, Server, OS).",
+    "description": "Monitor Linux host (VM, Server, OS), your personal machines with a futuristic dashboard.",
     "editable": true,
-    "gnetId": null,
+    "gnetId": 14731,
     "graphTooltip": 0,
     "id": null,
     "iteration": 1633868706184,
@@ -83,28 +83,28 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic",
+              "fixedColor": "rgba(0, 255, 255, 1)"
             },
-            "custom": {},
-            "mappings": [],
+            "custom": {
+              "fontSize": "large",
+              "fontFamily": "SciFi",
+              "background": "rgba(0, 0, 0, 0.7)"
+            },
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "red",
+                  "color": "rgba(255, 0, 0, 1)",
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 10
+                  "color": "rgba(255, 165, 0, 1)",
+                  "value": 50
                 },
                 {
-                  "color": "#EAB839",
-                  "value": 20
-                },
-                {
-                  "color": "blue",
-                  "value": 30
+                  "color": "rgba(0, 255, 0, 1)",
+                  "value": 80
                 }
               ]
             },
@@ -129,7 +129,8 @@
             "fields": "",
             "values": false
           },
-          "showUnfilled": true
+          "showUnfilled": true,
+          "animations": true
         },
         "pluginVersion": "7.3.1",
         "targets": [
@@ -153,26 +154,27 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic",
+              "fixedColor": "rgba(0, 255, 255, 1)"
             },
-            "custom": {},
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "nullValueMode": "null",
+            "custom": {
+              "fontSize": "large",
+              "fontFamily": "SciFi",
+              "background": "rgba(0, 0, 0, 0.7)"
+            },
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "rgba(50, 172, 45, 0.97)",
+                  "color": "rgba(0, 255, 0, 1)",
                   "value": null
                 },
                 {
-                  "color": "rgba(237, 129, 40, 0.89)",
+                  "color": "rgba(255, 165, 0, 1)",
                   "value": 85
                 },
                 {
-                  "color": "rgba(245, 54, 54, 0.9)",
+                  "color": "rgba(255, 0, 0, 1)",
                   "value": 95
                 }
               ]
@@ -199,7 +201,8 @@
             "values": false
           },
           "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          "showThresholdMarkers": true,
+          "animations": true
         },
         "pluginVersion": "7.3.1",
         "targets": [
@@ -222,27 +225,27 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic",
+              "fixedColor": "rgba(0, 255, 255, 1)"
             },
-            "custom": {},
-            "decimals": 0,
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "nullValueMode": "null",
+            "custom": {
+              "fontSize": "large",
+              "fontFamily": "SciFi",
+              "background": "rgba(0, 0, 0, 0.7)"
+            },
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "rgba(50, 172, 45, 0.97)",
+                  "color": "rgba(0, 255, 0, 1)",
                   "value": null
                 },
                 {
-                  "color": "rgba(237, 129, 40, 0.89)",
+                  "color": "rgba(255, 165, 0, 1)",
                   "value": 80
                 },
                 {
-                  "color": "rgba(245, 54, 54, 0.9)",
+                  "color": "rgba(255, 0, 0, 1)",
                   "value": 90
                 }
               ]
@@ -270,7 +273,8 @@
             "values": false
           },
           "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          "showThresholdMarkers": true,
+          "animations": true
         },
         "pluginVersion": "7.3.1",
         "targets": [
@@ -292,85 +296,100 @@
         "description": "",
         "fieldConfig": {
           "defaults": {
-            "custom": {},
-            "decimals": 1,
-            "mappings": [],
-            "nullValueMode": "null",
+            "color": {
+              "mode": "palette-classic",
+              "fixedColor": "rgba(0, 255, 255, 1)"
+            },
+            "custom": {
+              "fontSize": "large",
+              "fontFamily": "SciFi",
+              "background": "rgba(0, 0, 0, 0.7)"
+            },
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "rgba(50, 172, 45, 0.97)",
+                  "color": "rgba(0, 255, 0, 1)",
                   "value": null
+                },
+                {
+                  "color": "rgba(255, 165, 0, 1)",
+                  "value": 85
+                },
+                {
+                  "color": "rgba(255, 0, 0, 1)",
+                  "value": 95
                 }
               ]
             },
-            "unit": "s"
+            "unit": "percent"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 2,
-          "w": 4,
-          "x": 20,
-          "y": 0
+          "h": 7,
+          "w": 6,
+          "x": 13,
+          "y": 6
         },
+        "hideTimeOverride": false,
         "id": 4,
         "links": [],
         "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
             ],
             "fields": "",
             "values": false
-          }
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "animations": true
         },
         "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "node_time_seconds{instance=\"$node\",job=\"$job\"} - node_boot_time_seconds{instance=\"$node\",job=\"$job\"}",
-            "format": "time_series",
+            "expr": "(sum by (instance, device) (irate(node_disk_io_time_seconds_total{job=\"$job\",instance=\"$node\",device=~\"$device\"}[5m])) * 100) / count(node_disk_io_time_seconds_total{job=\"$job\",instance=\"$node\",device=~\"$device\"})",
+            "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "",
-            "refId": "A",
-            "step": 86400
+            "refId": "C",
+            "step": 900
           }
         ],
-        "title": "Uptime",
-        "type": "stat"
+        "title": "Disk I/O Busy",
+        "type": "gauge"
       },
       {
         "cacheTimeout": null,
         "datasource": "${DS_PROMETHEUS}",
-        "description": "",
+        "description": "Space Used On Root Mount",
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic",
+              "fixedColor": "rgba(0, 255, 255, 1)"
             },
-            "custom": {},
-            "decimals": 0,
-            "mappings": [],
-            "nullValueMode": "null",
+            "custom": {
+              "fontSize": "large",
+              "fontFamily": "SciFi",
+              "background": "rgba(0, 0, 0, 0.7)"
+            },
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "rgba(50, 172, 45, 0.97)",
+                  "color": "rgba(0, 255, 0, 1)",
                   "value": null
                 },
                 {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 80
+                  "color": "rgba(255, 165, 0, 1)",
+                  "value": 85
                 },
                 {
-                  "color": "rgba(245, 54, 54, 0.9)",
-                  "value": 90
+                  "color": "rgba(255, 0, 0, 1)",
+                  "value": 95
                 }
               ]
             },
@@ -380,11 +399,10 @@
         },
         "gridPos": {
           "h": 6,
-          "w": 8,
-          "x": 0,
+          "w": 5,
+          "x": 19,
           "y": 6
         },
-        "hideTimeOverride": false,
         "id": 5,
         "links": [],
         "options": {
@@ -397,116 +415,52 @@
             "values": false
           },
           "showThresholdLabels": false,
-          "showThresholdMarkers": true
+          "showThresholdMarkers": true,
+          "animations": true
         },
         "pluginVersion": "7.3.1",
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\"} * 100 / node_filesystem_size_bytes{instance=\"$node\",job=\"$job\",mountpoint=\"/\"}",
+            "expr": "100 - ((node_filesystem_avail_bytes{job=\"$job\",instance=\"$node\",device=~\"$device\",fstype=~\"$fstype\",mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"$job\",instance=\"$node\",device=~\"$device\",fstype=~\"$fstype\",mountpoint=\"/\"})",
             "format": "time_series",
+            "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "Available space on root",
-            "refId": "A",
+            "refId": "D",
             "step": 900
           }
         ],
-        "title": "Disk Space",
+        "title": "Disk Space Used (Root)",
         "type": "gauge"
-      },
-      {
-        "datasource": "${DS_PROMETHEUS}",
-        "description": "The average number of processes waiting to be scheduled",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {},
-            "decimals": 2,
-            "mappings": [],
-            "nullValueMode": "null",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "rgba(50, 172, 45, 0.97)",
-                  "value": null
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 2
-                },
-                {
-                  "color": "rgba(245, 54, 54, 0.9)",
-                  "value": 5
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 8,
-          "y": 6
-        },
-        "id": 6,
-        "links": [],
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          }
-        },
-        "pluginVersion": "7.3.1",
-        "targets": [
-          {
-            "expr": "node_load1{instance=\"$node\",job=\"$job\"}",
-            "intervalFactor": 1,
-            "refId": "A"
-          }
-        ],
-        "title": "Load Average",
-        "type": "stat"
       }
     ],
-    "refresh": "5s",
-    "schemaVersion": 26,
+    "refresh": false,
+    "schemaVersion": 27,
     "style": "dark",
     "tags": [
-      "templated",
-      "linux",
-      "node-exporter"
+      "Node",
+      "Prometheus"
     ],
     "templating": {
       "list": [
         {
-          "allValue": null,
-          "datasource": "${DS_PROMETHEUS}",
-          "definition": "label_values(node_uname_info{job=\"$job\"}, nodename)",
-          "hide": 0,
-          "includeAll": false,
-          "label": "Node",
-          "multi": false,
-          "name": "node",
-          "options": [],
-          "query": {
-            "query": "label_values(node_uname_info{job=\"$job\"}, nodename)",
-            "refId": "standard"
+          "allValue": ".*",
+          "current": {
+            "selected": true,
+            "text": "All",
+            "value": ".*"
           },
-          "refresh": 1,
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(node_uname_info{instance=~\"$node\"}, release)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Kernel Version",
+          "multi": false,
+          "name": "release",
+          "options": [],
+          "query": "label_values(node_uname_info{instance=~\"$node\"}, release)",
+          "refresh": 2,
           "regex": "",
-          "skipUrlSync": false,
-          "sort": 1,
+          "sort": 0,
           "tagValuesQuery": "",
           "tags": [],
           "tagsQuery": "",
@@ -515,22 +469,73 @@
         },
         {
           "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "default",
+            "value": "default"
+          },
           "datasource": "${DS_PROMETHEUS}",
-          "definition": "label_values(node_uname_info, job)",
-          "hide": 2,
+          "definition": "label_values(node_uname_info{instance=~\"$node\"}, job)",
+          "hide": 0,
           "includeAll": false,
           "label": "Job",
           "multi": false,
           "name": "job",
           "options": [],
-          "query": {
-            "query": "label_values(node_uname_info, job)",
-            "refId": "standard"
-          },
+          "query": "label_values(node_uname_info{instance=~\"$node\"}, job)",
           "refresh": 2,
           "regex": "",
-          "skipUrlSync": false,
-          "sort": 1,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "selected": true,
+            "text": "All",
+            "value": ".*"
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(node_uname_info{instance=~\"$node\"}, instance)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Node",
+          "multi": false,
+          "name": "node",
+          "options": [],
+          "query": "label_values(node_uname_info{instance=~\"$node\"}, instance)",
+          "refresh": 2,
+          "regex": "",
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "selected": true,
+            "text": "All",
+            "value": ".*"
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(node_uname_info{instance=~\"$node\"}, instance)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Device",
+          "multi": false,
+          "name": "device",
+          "options": [],
+          "query": "label_values(node_uname_info{instance=~\"$node\"}, instance)",
+          "refresh": 2,
+          "regex": "",
+          "sort": 0,
           "tagValuesQuery": "",
           "tags": [],
           "tagsQuery": "",
@@ -540,7 +545,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-5m",
       "to": "now"
     },
     "timepicker": {
@@ -557,7 +562,7 @@
         "1d"
       ],
       "time_options": [
-        "5m",
+        "5s",
         "15m",
         "1h",
         "6h",
@@ -568,9 +573,9 @@
         "30d"
       ]
     },
-    "timezone": "browser",
-    "title": "Futuristic Dashboard By Tejas Mane",
+    "timezone": "",
+    "title": "Futuristic Linux Host Dashboard",
     "uid": null,
-    "version": 0
+    "version": 1
   }
   
