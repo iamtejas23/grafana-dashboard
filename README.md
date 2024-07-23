@@ -1,4 +1,3 @@
-![Build Status](https://img.shields.io/github/workflow/status/username/repo/CI)
 # Futuristic Dashboard by Tejas
 
 <!-- Add a screenshot of your dashboard -->
