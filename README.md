@@ -66,5 +66,5 @@ Here are some screenshots showcasing the dashboard:
 
 ![Dashboard Screenshot](https://i.imgur.com/WpdOJGx.png)
 
-Feel free to reach out if you have any questions or need further assistance!
+
 
